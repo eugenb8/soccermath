@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #2d2d2d;
+    font-family: 'Arial', sans-serif;
+}
+
+#game-container {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#google-login-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
