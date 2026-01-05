@@ -102,6 +102,26 @@ export default class GameScene extends Phaser.Scene {
         if (this.isKicking) return;
         this.isKicking = true;
 
+        // Animate Player Kick
+        // Sequence: Windup (50ms) -> Kick (50ms) -> Follow (150ms) -> Reset
+        this.player.setTexture('player_windup');
+
+        this.time.delayedCall(50, () => {
+            this.player.setTexture('player_kick');
+            // Ball starts moving at point of contact
+            this.startBallMovement(targetX, targetY, index);
+        });
+
+        this.time.delayedCall(150, () => {
+            this.player.setTexture('player_follow');
+        });
+
+        this.time.delayedCall(400, () => {
+            this.player.setTexture('player');
+        });
+    }
+
+    startBallMovement(targetX, targetY, index) {
         // Animate Ball
         this.tweens.add({
             targets: this.ball,
